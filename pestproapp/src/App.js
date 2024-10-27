@@ -5,6 +5,8 @@ import * as topojson from "topojson-client";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
+
+
 function MapChart({ selectedCounty, selectedState }) {
   const [zoom, setZoom] = useState(1);
   const [center, setCenter] = useState([0, 0]);
@@ -184,6 +186,21 @@ function App() {
   const [selectedCounty, setSelectedCounty] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
 
+
+
+  const [data, setData] = useState([{}])
+
+  useEffect(() => {
+    fetch("/members").then(
+      res => res.json()
+    ).then(
+      data => {
+        setData(data)
+        console.log(data)
+      }
+    )
+  }, [])
+
   const handleSelectCountyAndState = (county, state) => {
     setSelectedCounty(county);
     setSelectedState(state);
@@ -197,6 +214,14 @@ function App() {
       <ZipCodeInput onSelectCountyAndState={handleSelectCountyAndState} />
     </div>
   );
+
+    
+
+
+
+
+
+
 }
 
 export default App;
