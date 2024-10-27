@@ -91,8 +91,7 @@ function MapChart({ selectedCounty, selectedState }) {
                   style={{
                     default: {
                       fill:
-                        geo.properties.name === selectedCounty &&
-                        geo.properties.state_name === selectedState
+                        geo.properties.name === selectedCounty 
                           ? "#FFD700"
                           : "#66c0a1"
                     },
